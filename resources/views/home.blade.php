@@ -25,6 +25,9 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">{{ __('Develop By : Muhammad Dena | 21552011440 | TIF-RM 22 CID') }}</div>
+            </div>
         </div>
     </div>
 </div>

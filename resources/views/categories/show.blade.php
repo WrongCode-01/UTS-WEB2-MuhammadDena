@@ -9,7 +9,7 @@
                 <div class="card-body">
                      <div class="row">
                         <div class="col-md-4"><strong>Name:</strong></div>
-                        <div class="col-md-8">{{ $category->category->name ?? 'N/A' }}</div>
+                        <div class="col-md-8">{{ $category->name ?? 'N/A' }}</div>
                     </div>
                      <div class="row">
                         <div class="col-md-4"><strong>Description:</strong></div>

@@ -16,6 +16,8 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+// Route untuk halaman sukses pendaftaran
+Route::get('/register/success', [HomeController::class, 'showRegistrationSuccess'])->name('register.success');
 
 // Route Resource untuk Kategori - dilindungi oleh middleware 'auth'
 Route::resource('categories', CategoryController::class)->middleware('auth');

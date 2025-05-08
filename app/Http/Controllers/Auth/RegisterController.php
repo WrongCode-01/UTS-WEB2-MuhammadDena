@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -67,6 +70,20 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        // Hapus logic login otomatis
+        // $this->guard()->login($user); // Baris ini dihapus atau dikomentari
+
+        // Redirect ke halaman sukses pendaftaran
+        // Kita bisa mengirim beberapa data user menggunakan flash session
+        return redirect()->route('register.success')->with([
+            'registration_success' => true,
+            'registered_user_name' => $user->name,
+            'registered_user_email' => $user->email,
         ]);
     }
 }
